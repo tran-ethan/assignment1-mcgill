@@ -21,8 +21,8 @@ public abstract class Drink extends StoreItem {
     }
 
     public boolean combine(Drink drink) {
-        // Cannot combine with a full pack or drink is empty
-        if (this.numOfBottles == MAX_PACK_SIZE || drink.getNumOfBottles() == 0) {
+        // Cannot combine with a full pack
+        if (this.numOfBottles == MAX_PACK_SIZE) {
             return false;
         }
         // Combine with the same drink if sizes are possible

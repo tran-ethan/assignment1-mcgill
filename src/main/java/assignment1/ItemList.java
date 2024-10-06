@@ -43,19 +43,26 @@ public class ItemList {
     }
 
     public StoreItem[] findEqualItems(StoreItem item) {
-        StoreItem[] equalItems = new StoreItem[size];
-        boolean hasEqualItems = false;
+        int count = 0;
         for (int i = 0; i < size; i++) {
             if (items[i].equals(item)) {
-                hasEqualItems = true;
-                equalItems[i] = items[i];
+                count++;
             }
         }
-        if (!hasEqualItems) {
+
+        if (count == 0) {
             return new StoreItem[0];
         }
-        // Returns array including null elements, representing the non-equal items
-        return equalItems;
+
+        StoreItem[] equals = new StoreItem[count];
+        int index = 0;
+        for (int i = 0; i < size; i++) {
+            if (items[i].equals(item)) {
+                equals[index++] = items[i];
+            }
+        }
+        // Returns array without null elements
+        return equals;
     }
 
     private void shiftItemsLeft(int index) {
